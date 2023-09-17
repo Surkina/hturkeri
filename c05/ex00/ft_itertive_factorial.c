@@ -23,7 +23,7 @@ int	protection(int *a, int *b)
 	if (*a == result / *b)
 		return (true);
 	else
-		return (true);
+		return (false);
 }
 
 int	ft_iterative_factorial(int nb)
@@ -35,13 +35,13 @@ int	ft_iterative_factorial(int nb)
 	factorial = 1;
 	if (nb < 0)
 	{
-		return (0);
+		return (false);
 	}
 	while (i <= nb)
 	{
 		if (!protection(&factorial, &i))
 		{
-			return (0);
+			return (false);
 		}
 		factorial *= i;
 		i++;
