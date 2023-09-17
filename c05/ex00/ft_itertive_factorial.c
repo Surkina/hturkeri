@@ -11,43 +11,35 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdbool.h>
 
-int	protection(int *a, int *b)
+int protection(int a, int b)
 {
-	int	result;
-
-	if (*a == 0 || *b == 0)
-		return (true);
-	result = *a * *b;
-	if (*a == result / *b)
-		return (true);
-	else
-		return (false);
+    int result = a * b;
+    if (a == 0 || b == 0)
+        return 1;
+    if (a == result / b)
+        return 1;
+    else
+        return 0;
 }
 
-int	ft_iterative_factorial(int nb)
+int ft_iterative_factorial(int nb)
 {
-	int	factorial;
-	int	i;
-
-	i = 1;
-	factorial = 1;
-	if (nb < 0)
-	{
-		return (false);
-	}
-	while (i <= nb)
-	{
-		if (!protection(&factorial, &i))
-		{
-			return (false);
-		}
-		factorial *= i;
-		i++;
-	}
-	return	(factorial);
+    int factorial = 1;
+    int i = 1;
+    
+    if (nb < 0)
+        return 0;
+    while (i <= nb)
+    {
+        if (!protection(factorial, i))
+            return 0;
+        factorial *= i;
+        i++;
+    }
+    return factorial;
 }
+
 /*
 int main(void)
 {
@@ -55,7 +47,7 @@ int main(void)
     int result = ft_iterative_factorial(num);
 
     if (result != 0)
-        printf("%d", result);
+        printf("%d\n", result);
     else
         return 0;
 }
